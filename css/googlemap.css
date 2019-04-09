@@ -1,0 +1,37 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto 50%;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: #D3EAFD;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+  }
+  label{
+
+    float:left;
+    width:150px;
+    text-align: right;
+    padding-right: 12px;
+    margin-top: 2px;
+    clear:left;
+  }
+th{
+
+  width: 200px;
+}
+body{
+
+  background-color: #D3EAFD;
+  font-family:  Helvetica;
+}
+h1, h2 {
+
+  font-family:  Helvetica;
+
+}
