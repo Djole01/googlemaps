@@ -89,6 +89,15 @@
 			}
 		}
 
+
+		public function getFilterFromDatabase() 
+		{
+			$sql = "SELECT DISTINCT filter FROM $this->tableName";	
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+
 		
 	}
 

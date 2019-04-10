@@ -9,8 +9,9 @@ if(isset($_POST['update']))
     $username = "root";
     $password = "";
     $databaseName = "fitness";
+    // connect with mysql
+  $con = mysqli_connect($hostname, $username, $password, $databaseName);
     
-    $connect = mysqli_connect($hostname, $username, $password, $databaseName);
     
     // get values form input text and number
     
@@ -36,11 +37,13 @@ if(isset($_POST['update']))
       $query = "UPDATE `gyms` SET `name`='".$name."',`address`='".$address."',`keyword`='".$keyword."',`lat`='".$lat."',`lng`='".$lng."' WHERE `id` = $id";
     }
 
-    $result = mysqli_query($connect, $query);
+    $result = mysqli_query($con, $query);
     
     if($result)
     {
+     
       header("Refresh:0; url=index.php");
+      
     }
     else
     {

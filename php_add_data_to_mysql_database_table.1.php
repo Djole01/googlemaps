@@ -4,13 +4,13 @@
 
 if(isset($_POST['add']))
   {
-      // database credidentials
     $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $databaseName = "fitness";
+$username = "root";
+$password = "";
+$databaseName = "fitness";
+// connect with mysql
+$con = mysqli_connect($hostname, $username, $password, $databaseName);
     
-    $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
     
 
@@ -43,12 +43,13 @@ if(isset($_POST['add']))
 
     }
     
-    $result = mysqli_query($connect, $query);
+    $result = mysqli_query($con, $query);
     
     if($result)
     {
       
       header("Refresh:0; url=index.php");
+      
       // header("Refresh:0; url=index.php");
     }
     else

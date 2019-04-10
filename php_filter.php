@@ -3,13 +3,13 @@ session_start();
 
 if((isset($_POST["filterSubmit"])) && !empty($_POST["filterSubmit"])) 
 {
-   
   $hostname = "localhost";
-  $username = "root";
-  $password = "";
-  $databaseName = "fitness";
+$username = "root";
+$password = "";
+$databaseName = "fitness";
+// connect with mysql
+$con = mysqli_connect($hostname, $username, $password, $databaseName);
         
-  $connect = mysqli_connect($hostname, $username, $password, $databaseName);
         
   // get values form filter input
   $filter = $_POST['filterInput'];
@@ -22,11 +22,13 @@ if((isset($_POST["filterSubmit"])) && !empty($_POST["filterSubmit"]))
         
   $query = "UPDATE `gyms` SET `filter`='".$filter."'";
 
-  $result = mysqli_query($connect, $query);
+  $result = mysqli_query($con, $query);
         
   if($result)
   {
+    
     header("Refresh:0; url=index.php");
+    
      exit();
   }
   else

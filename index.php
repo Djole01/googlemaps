@@ -1,6 +1,28 @@
 <?php
 session_start();
-$_SESSION['filterValue'] = 'general';
+
+// this will be changed to take value from database.
+
+// this neeeeeds work on
+				$hostname = "localhost";
+				$username = "root";
+				$password = "";
+				$databaseName = "fitness";
+				// connect with mysql
+				$con = mysqli_connect($hostname, $username, $password, $databaseName);
+				
+				// select Database
+				mysqli_select_db($con,'fitness');
+				$sql = "SELECT DISTINCT filter FROM gyms";
+				$result = mysqli_query($con,$sql);
+
+				while($row = mysqli_fetch_assoc($result)) {
+					
+					$_SESSION['filterValue'] = $row["filter"];
+				 }
+				 
+				
+
 
 ?>
 
@@ -135,6 +157,8 @@ $_SESSION['filterValue'] = 'general';
 
 					}
 				
+
+				
 			?>
 					<input type="submit" name="filterSubmit" value="Filter Data"><br><br>
 					</form>
@@ -152,36 +176,36 @@ $_SESSION['filterValue'] = 'general';
 						</tr>
 					
 			<?php
+				
 				$hostname = "localhost";
 				$username = "root";
 				$password = "";
 				$databaseName = "fitness";
+				// connect with mysql
+				$con = mysqli_connect($hostname, $username, $password, $databaseName);
 						
-					// connect with mysql
 					
-					$con = mysqli_connect($hostname, $username, $password, $databaseName);
-					
-					
-					// select Database
-					mysqli_select_db($con,'fitness');
+				// select Database
+				mysqli_select_db($con,'fitness');
 
-					$sql = "SELECT * FROM gyms WHERE filter = keyword";
+				$sql = "SELECT * FROM gyms WHERE filter = keyword";
 					
-					$records = mysqli_query($con,$sql);
+				$records = mysqli_query($con,$sql);
 
-					while ($row = mysqli_fetch_array($records))
-						{
-							echo "<tr>";
-							echo "<td>".$row['id']."</td>";
-							echo "<td>".$row['name']."</td>";
-							echo "<td>".$row['address']."</td>";
-							echo "<td>".$row['keyword']."</td>";
-							echo "<td>".$row['lat']."</td>";
-							echo "<td>".$row['lng']."</td>";
-							echo "<td><a href=delete.php?id=".$row['id'].">Delete</a></td>";
+				while ($row = mysqli_fetch_array($records))
+					{
+						echo "<tr>";
+						echo "<td>".$row['id']."</td>";
+						echo "<td>".$row['name']."</td>";
+						echo "<td>".$row['address']."</td>";
+						echo "<td>".$row['keyword']."</td>";
+						echo "<td>".$row['lat']."</td>";
+						echo "<td>".$row['lng']."</td>";
+						echo "<td><a href=delete.php?id=".$row['id'].">Delete</a></td>";
 
 
-						}
+					}
+				
 
 
 			?>
@@ -201,19 +225,18 @@ $_SESSION['filterValue'] = 'general';
 								<th>Delete</th>
 							</tr>
 						<?php
-							$hostname = "localhost";
-							$username = "root";
-							$password = "";
-							$databaseName = "fitness";
-							
-							// connect with mysql
-							$con = mysqli_connect($hostname, $username, $password, $databaseName);
-							
-							
+						$hostname = "localhost";
+						$username = "root";
+						$password = "";
+						$databaseName = "fitness";
+						// connect with mysql
+						$con = mysqli_connect($hostname, $username, $password, $databaseName);
 							// select Database
 							mysqli_select_db($con,'fitness');
 							// select Query
-							$sql = "SELECT * FROM gyms";
+							$sql = "SELECT * FROM gyms";	
+							
+						
 
 
 							$records = mysqli_query($con,$sql);
@@ -230,6 +253,7 @@ $_SESSION['filterValue'] = 'general';
 
 
 							}
+							
 
 							
 						?>
