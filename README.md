@@ -20,5 +20,6 @@ Personal Note:
 	I focus on making it work first.
 	
 	 
-	
+Working hours: 
+	About 20 hours in total, 3 hours per day average.
 	
