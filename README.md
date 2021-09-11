@@ -14,6 +14,4 @@ Usage:
 	If user does not enter coordinates, geocoding will do that for him, if he does, the location marker will
 	be placed based on the coordinates.
 
-Working hours: 
-	About 20 hours in total, 3 hours per day average.
 	
